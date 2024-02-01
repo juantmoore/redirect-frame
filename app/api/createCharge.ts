@@ -1,14 +1,28 @@
-// Filename: pages/api/commerce/route.ts
-
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { ChargeRequestBody } from '../../types/commerceTypes';
 
-// Ensure the environment variables are defined
 const apiKey = process.env.API_KEY;
 const apiVersion = process.env.API_VERSION;
 
 if (!apiKey || !apiVersion) {
   throw new Error('API_KEY or API_VERSION is not defined in the environment variables');
 }
+
+const requestBody: ChargeRequestBody = {
+  local_price: {
+    amount: '1.50',
+    currency: 'USD',
+  },
+  metadata: {
+    name: '',
+    email: 'bobby@axecapital.com',
+    address: '123 Satoshi Lane',
+  },
+  pricing_type: 'no_price',
+  name: '',
+  description: '',
+  redirect_url: 'https://google.com',
+};
 
 const headers = {
   Accept: 'application/json',
@@ -28,7 +42,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     const response = await fetch('https://api.commerce.coinbase.com/charges', {
       method: 'POST',
       headers: headers,
-      body: JSON.stringify(req.body),
+      body: JSON.stringify(requestBody), //JSON.stringify(req.body),
     });
 
     if (!response.ok) {
@@ -36,6 +50,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     }
 
     const data = await response.json();
+    console.log(data);
     res.status(200).json(data);
   } catch (e) {
     console.error(e);
