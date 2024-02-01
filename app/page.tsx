@@ -9,11 +9,11 @@ const frameMetadata = getFrameMetadata({
 });
 
 export const metadata: Metadata = {
-  title: 'Redirect frame',
-  description: 'LFG',
+  title: 'Base Beanies',
+  description: 'Exclusive Base beanies for Warpcaster users',
   openGraph: {
-    title: 'Redirect frame',
-    description: 'LFG',
+    title: 'Base Beanies',
+    description: 'Exclusive Base beanies for Warpcaster users',
     images: [NEXT_PUBLIC_URL],
   },
   other: {
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <img src={'/video.png'} />
+      <img src={'/onchain.png'} />
     </>
   );
 }
