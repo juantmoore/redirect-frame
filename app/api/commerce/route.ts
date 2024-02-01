@@ -1,3 +1,5 @@
+// Filename: pages/api/commerce/route.ts
+
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 // Ensure the environment variables are defined
@@ -15,7 +17,13 @@ const headers = {
   'X-CC-Version': apiVersion,
 };
 
-export default async function createCharge(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+  if (req.method !== 'POST') {
+    res.setHeader('Allow', ['POST']);
+    res.status(405).end(`Method ${req.method} Not Allowed`);
+    return;
+  }
+
   try {
     const response = await fetch('https://api.commerce.coinbase.com/charges', {
       method: 'POST',
