@@ -4,8 +4,6 @@ import { ChargeRequestBody } from '../../../types/commerceTypes';
 const apiKey = process.env.API_KEY;
 const apiVersion = process.env.API_VERSION;
 const commerceApiUrl = 'https://api.commerce.coinbase.com/charges';
-console.log('API Key:', apiKey);
-console.log('API Version:', apiVersion);
 
 const requestBody: ChargeRequestBody = {
   local_price: {
@@ -28,6 +26,7 @@ requestHeaders.set('Content-Type', 'application/json');
 requestHeaders.set('Accept', 'application/json');
 requestHeaders.set('X-CC-Api-Key', `${apiKey}`);
 requestHeaders.set('X-CC-Version', `${apiVersion}`);
+console.log('request headers: ', requestHeaders);
 
 async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
   try {
@@ -40,7 +39,7 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
+    console.log(response.json());
     return response.json() as Promise<any>;
   } catch (error) {
     throw new Error('Failed to create charge: ' + error);
