@@ -39,9 +39,12 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    console.log(response.json());
-    return response.json() as Promise<any>;
+
+    const responseData = await response.json();
+    console.log(responseData);
+    return responseData;
   } catch (error) {
+    console.error('Failed to create charge:', error);
     throw new Error('Failed to create charge: ' + error);
   }
 }
