@@ -46,12 +46,12 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
 }
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  const r = await createCharge(requestBody);
-  console.log(`r: ${r}`);
   return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
+  const r = await createCharge(requestBody);
+  console.log(`r: ${r}`);
   return getResponse(req);
 }
 
