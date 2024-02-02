@@ -51,7 +51,7 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
 }
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  console.log('redirected:', req);
+  //console.log('redirected:', req);
   return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
 }
 
@@ -68,18 +68,21 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 //   });
 // }
 
-export async function POST(req: NextRequest): Promise<NextResponse> {
-  try {
-    const responseData = await createCharge(requestBody);
-    const hostedUrl = responseData.data.hosted_url;
-    return getResponse(hostedUrl); // Use the hostedUrl for redirection
-  } catch (error) {
-    console.error('Error in POST function:', error);
-    return new NextResponse(JSON.stringify({ error: 'Failed to create charge' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' },
-    });
-  }
+export async function POST(req: NextRequest): Promise<Response> {
+  return getResponse(req);
 }
+// export async function POST(req: NextRequest): Promise<NextResponse> {
+//   try {
+//     const responseData = await createCharge(requestBody);
+//     const hostedUrl = responseData.data.hosted_url;
+//     return getResponse(hostedUrl); // Use the hostedUrl for redirection
+//   } catch (error) {
+//     console.error('Error in POST function:', error);
+//     return new NextResponse(JSON.stringify({ error: 'Failed to create charge' }), {
+//       status: 500,
+//       headers: { 'Content-Type': 'application/json' },
+//     });
+//   }
+// }
 
 export const dynamic = 'force-dynamic';
