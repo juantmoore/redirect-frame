@@ -54,8 +54,7 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
-  const r = await createCharge(requestBody);
-  console.log(`r: ${r}`);
+  await createCharge(requestBody);
   return getResponse(req);
 }
 
