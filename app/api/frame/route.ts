@@ -51,6 +51,7 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
 }
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
+  console.log('redirected:', req);
   return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
 }
 
