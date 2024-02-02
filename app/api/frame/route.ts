@@ -4,6 +4,8 @@ import { ChargeRequestBody } from '../../../types/commerceTypes';
 const apiKey = process.env.API_KEY;
 const apiVersion = process.env.API_VERSION;
 const commerceApiUrl = 'https://api.commerce.coinbase.com/charges';
+console.log('API Key:', apiKey);
+console.log('API Version:', apiVersion);
 
 const requestBody: ChargeRequestBody = {
   local_price: {
