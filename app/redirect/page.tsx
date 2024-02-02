@@ -7,6 +7,7 @@ export default function RedirectPage() {
 
   useEffect(() => {
     const youtubeUrl = 'https://www.youtube.com/watch?v=MwCn50ZVPGQ&feature=youtu.be';
+    console.log('redirected!');
 
     // Perform the redirect
     window.location.href = youtubeUrl; // For a full page reload redirect
