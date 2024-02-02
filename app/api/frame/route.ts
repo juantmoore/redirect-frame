@@ -50,13 +50,13 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
   }
 }
 
-// async function getResponse(req: NextRequest): Promise<NextResponse> {
-//   return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
-// }
-
-async function getResponse(hostedUrl: string): Promise<NextResponse> {
-  return NextResponse.redirect(hostedUrl, { status: 302 });
+async function getResponse(req: NextRequest): Promise<NextResponse> {
+  return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
 }
+
+// async function getResponse(hostedUrl: string): Promise<NextResponse> {
+//   return NextResponse.redirect(hostedUrl, { status: 302 });
+// }
 
 // export async function POST(req: NextRequest): Promise<Response> {
 //   const responseData = await createCharge(requestBody);
