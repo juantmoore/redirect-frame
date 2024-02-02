@@ -50,17 +50,35 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
   }
 }
 
-async function getResponse(req: NextRequest): Promise<NextResponse> {
-  return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
+// async function getResponse(req: NextRequest): Promise<NextResponse> {
+//   return NextResponse.redirect('https://commerce-frame-6r9h.vercel.app/redirect', { status: 302 });
+// }
+
+async function getResponse(hostedUrl: string): Promise<NextResponse> {
+  return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
-export async function POST(req: NextRequest): Promise<Response> {
-  const responseData = await createCharge(requestBody);
-  const hostedUrl = responseData.data.hosted_url;
-  return new Response(JSON.stringify({ hostedUrl }), {
-    status: 200,
-    headers: { 'Content-Type': 'application/json' },
-  });
+// export async function POST(req: NextRequest): Promise<Response> {
+//   const responseData = await createCharge(requestBody);
+//   const hostedUrl = responseData.data.hosted_url;
+//   return new Response(JSON.stringify({ hostedUrl }), {
+//     status: 200,
+//     headers: { 'Content-Type': 'application/json' },
+//   });
+// }
+
+export async function POST(req: NextRequest): Promise<NextResponse> {
+  try {
+    const responseData = await createCharge(requestBody);
+    const hostedUrl = responseData.data.hosted_url;
+    return getResponse(hostedUrl); // Use the hostedUrl for redirection
+  } catch (error) {
+    console.error('Error in POST function:', error);
+    return new NextResponse(JSON.stringify({ error: 'Failed to create charge' }), {
+      status: 500,
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
 }
 
 export const dynamic = 'force-dynamic';
