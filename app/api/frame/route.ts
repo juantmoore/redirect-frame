@@ -40,6 +40,7 @@ async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
 
+    console.log('Response before parsing:', response);
     const responseData = await response.json();
     console.log(responseData);
     return responseData;
