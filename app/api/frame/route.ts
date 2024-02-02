@@ -55,8 +55,12 @@ async function getResponse(req: NextRequest): Promise<NextResponse> {
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
-  await createCharge(requestBody);
-  return getResponse(req);
+  const responseData = await createCharge(requestBody);
+  const hostedUrl = responseData.data.hosted_url;
+  return new Response(JSON.stringify({ hostedUrl }), {
+    status: 200,
+    headers: { 'Content-Type': 'application/json' },
+  });
 }
 
 export const dynamic = 'force-dynamic';
