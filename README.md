@@ -6,7 +6,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
 
 1. Create a Coinbase Commerce account
 2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` domain/URL
-3. An image of your item (`.png`, `.jpg`)
+3. An image of your item (`.png`, `.jpg`) with 1200 x 630 pixels
 
 ## Start here
 
