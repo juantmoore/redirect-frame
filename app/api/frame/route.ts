@@ -91,6 +91,7 @@ import { NextRequest, NextResponse } from 'next/server';
 const NEXT_PUBLIC_URL = 'https://commerce-frame-6r9h.vercel.app';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
+  console.log('getResponse()');
   return NextResponse.redirect(`${NEXT_PUBLIC_URL}/redirect`, { status: 302 });
 }
 
