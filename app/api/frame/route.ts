@@ -88,9 +88,10 @@
 // export const dynamic = 'force-dynamic';
 
 import { NextRequest, NextResponse } from 'next/server';
+const NEXT_PUBLIC_URL = 'https://commerce-frame-6r9h.vercel.app';
 
 async function getResponse(req: NextRequest): Promise<NextResponse> {
-  return NextResponse.redirect('https://redirect-frame.vercel.app/redirect', { status: 302 });
+  return NextResponse.redirect(`${NEXT_PUBLIC_URL}/redirect`, { status: 302 });
 }
 
 export async function POST(req: NextRequest): Promise<Response> {
