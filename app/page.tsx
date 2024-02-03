@@ -3,7 +3,7 @@ import type { Metadata } from 'next';
 
 const NEXT_PUBLIC_URL = 'https://commerce-frame-6r9h.vercel.app';
 const frameMetadata = getFrameMetadata({
-  buttons: [{ label: 'Click to unlock', action: 'post_redirect' }],
+  buttons: [{ label: 'Buy', action: 'post_redirect' }],
   image: `${NEXT_PUBLIC_URL}/onchain.png`,
   post_url: `${NEXT_PUBLIC_URL}/api/frame`,
 });
