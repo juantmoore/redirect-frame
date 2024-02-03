@@ -1,31 +1,17 @@
 'use client';
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { GetServerSideProps } from 'next';
-const NEXT_PUBLIC_URL = 'https://commerce-frame-6r9h.vercel.app'; //replace me
-// interface RedirectPageProps {
-//   hostedUrl: string;
-// }
 
 export default function RedirectPage() {
+  const router = useRouter();
+  const { id } = router.query; // Get the 'id' query parameter
+
   useEffect(() => {
-    async function fetchHostedUrl() {
-      try {
-        const response = await fetch('/api/frame', { method: 'POST' });
-        const data = await response.json();
-
-        if (data.hostedUrl) {
-          window.location.href = data.hostedUrl;
-        } else {
-          console.error('Hosted URL not found');
-        }
-      } catch (error) {
-        console.error('Error fetching hosted URL:', error);
-      }
+    if (id) {
+      const hostedUrl = `https://commerce.coinbase.com/pay/${id}`;
+      window.location.href = hostedUrl;
     }
-
-    fetchHostedUrl();
-  }, []);
+  }, [id]); // Depend on 'id' to trigger effect
 
   return (
     <div>
