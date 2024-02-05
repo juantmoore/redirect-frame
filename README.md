@@ -48,7 +48,7 @@ git push -u origin master
 ## Add Cast your Frame:
 
 1. Log into your [Warpcast](https://warpcast.com/)
-2. Paste link to your vercel or site (remember to use `https://`)
+2. Paste a link to your vercel site or custom domain _remember to use `https://`_
    ![image](./public/cast.png)
 3. Click "Cast"
 
