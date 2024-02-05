@@ -22,7 +22,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
 > [!TIP]
 > For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
 
-4. Open the foked repo from step 1 in a code editor like Visual Studio
+4. Open the forked repo from step 1 in a code editor like Visual Studio
 5. Using a code editor or the command line, replace the temporary image in the `public/` folder with the image of your product
 6. Navigate to the `utils/` folder (if using the command line run `cd utils/`)
 7. Replace the following variables in the `utils.ts` file:
