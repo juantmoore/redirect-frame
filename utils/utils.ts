@@ -39,3 +39,20 @@ export async function createCharge(chargeData: ChargeRequestBody): Promise<any> 
     throw new Error('Failed to create charge: ' + error);
   }
 }
+
+export function buildRequestBody(address: string | undefined): ChargeRequestBody {
+  const requestBody: ChargeRequestBody = {
+    local_price: {
+      amount: PRODUCT_PRICE_USD,
+      currency: 'USD',
+    },
+    metadata: {
+      walletAddress: address,
+    },
+    pricing_type: 'fixed_price',
+    name: 'Base Beaneies',
+    description: ITEM_DESCRIPTION,
+    redirect_url: REDIRECT_URL,
+  };
+  return requestBody;
+}
