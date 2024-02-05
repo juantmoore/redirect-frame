@@ -48,6 +48,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     const addr = await getMetaData(req);
     console.log('user:', addr);
     const body = buildRequestBody(addr);
+    console.log('request body', body);
     const responseData = await createCharge(body);
     const hostedUrl = responseData.data.hosted_url;
     return getResponse(req, hostedUrl);
