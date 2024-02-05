@@ -4,7 +4,7 @@ export interface ChargeRequestBody {
     currency: string;
   };
   metadata: {
-    walletAddress: string;
+    walletAddress: string | undefined;
   };
   pricing_type: 'fixed_price' | 'no_price';
   name: string;
