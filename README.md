@@ -17,7 +17,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
 
 1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo?tool=webui#forking-a-repository) this repo
 2. Connect your github account to Vercel. Reference the [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for detailed steps
-3. Upload your Commerce API Key credentials to Vercel settings page or your website hosting server. See the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for detailed steps
+3. Upload your [Commerce API](https://beta.commerce.coinbase.com/settings/security) key credentials to Vercel settings page or your website hosting server. See the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for detailed steps
 
 > [!TIP]
 > For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
@@ -49,7 +49,7 @@ Done!
 
 ## Add Cast your Frame:
 
-1. Log into warpcast
+1. Log into your [Warpcast](https://warpcast.com/)
 2. Create cast
 3. Paste link to your vercel or site (remember to use `https://`)
 
