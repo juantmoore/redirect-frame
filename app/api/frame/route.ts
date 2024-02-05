@@ -40,7 +40,6 @@ function buildRequestBody(address: string | undefined): ChargeRequestBody {
 }
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
-  await getMetaData(req);
   return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
