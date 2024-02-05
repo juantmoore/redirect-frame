@@ -18,6 +18,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
 1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo?tool=webui#forking-a-repository) this repo
 2. Connect your github account to Vercel. Reference the [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for detailed steps
 3. Upload your [Commerce API](https://beta.commerce.coinbase.com/settings/security) key credentials to Vercel settings page or your website hosting server. See the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for detailed steps
+   [!image](./public/env_credentials.png)
 
 > [!TIP]
 > For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
@@ -31,7 +32,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
    - `ITEM_DESCRIPTION` - A description of your product
    - `ITEM_TITLE` - Title of your product
    - `IMAGE_NAME` - The full name of your image including file type. (ex: `onchain.png`)
-   - `REDIRECT_URL` - A URL (`string`) to redirect users to upon purchase completion
+   - (optional) `REDIRECT_URL` - A URL (`string`) to redirect users to upon purchase completion
    - `PRODUCT_PRICE_USD` - The price (`string`) of your prouct in USD (ex: "5.99")
 
 ## Commit changes
