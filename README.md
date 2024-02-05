@@ -4,18 +4,21 @@ This guide explain how to sell a single item using via a Cast which allows your 
 
 ## Pre-requirements
 
-1. Create a Coinbase Commerce account [here](https://beta.commerce.coinbase.com/sign-up)
-2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` URL - https://vercel.com/signup
-3. Create a Github account -> [sign up](https://github.com/signup)
-4. An image of your item for sale (`.png`, `.jpg`) with 1200 x 630 pixel dimensions
+1. Create a Coinbase Commerce [account](https://beta.commerce.coinbase.com/sign-up)
+2. (optional) Create a vercel account for easy deployment. - https://vercel.com/signup
+
+> [!IMPORTANT]
+> Warpcast requires your Frame to be a `https://` URL 3. Create a Github account -> [sign up](https://github.com/signup) 4. An image of your item for sale (`.png`, `.jpg`) with 1200 x 630 pixel dimensions
 
 ## Start here
 
 1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo?tool=webui#forking-a-repository) this repo
 2. Connect your github account to Vercel. Reference the [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for detailed steps
 3. Upload your Commerce API Key credentials to Vercel settings page or your website hosting server. See the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for detailed steps
-   > [!TIP]
-   > For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
+
+> [!TIP]
+> For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
+
 4. Open the foked repo from step 1 in a code editor like Visual Studio
 5. Using a code editor or the command line, replace the temporary image in the `public/` folder with the image of your product
 6. Navigate to the `utils/` folder (if using the command line run `cd utils/`)
