@@ -9,7 +9,7 @@ export const PRODUCT_PRICE_USD = '2.00';
 export const ITEM_DESCRIPTION = 'Exclusive Base beanies for Warpcaster users';
 export const ITEM_TITLE = 'Base Beanies';
 export const REDIRECT_URL = '';
-export const IMAGE_NAME = 'neom.jpg';
+export const IMAGE_NAME = 'onchain.png';
 
 export const createRequestHeaders = (): Headers => {
   const headers = new Headers();
