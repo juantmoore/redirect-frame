@@ -5,39 +5,47 @@ This guide explain how to sell a single item using via a Cast which allows your 
 ## Pre-requirements
 
 1. Create a Coinbase Commerce account [here](https://beta.commerce.coinbase.com/sign-up)
-2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` URL
-3. An image of your item for sale (`.png`, `.jpg`) with 1200 x 630 pixel dimensions
+2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` URL - https://vercel.com/signup
+3. Create a Github account -> [sign up](https://github.com/signup)
+4. An image of your item for sale (`.png`, `.jpg`) with 1200 x 630 pixel dimensions
 
 ## Start here
 
-1. Clone this repo by running
-   ` git clone blah blah.git....`
+1. [Fork](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo?tool=webui#forking-a-repository) this repo
 2. Connect your github account to Vercel. Reference the [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for detailed steps
-3. Replace the temporary image in the `public/` folder with the image of your product
-4. Replace the following variables in the `utils.ts` file:
+3. Upload your Commerce API Key credentials to Vercel settings page or your website hosting server. See the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for detailed steps
+   > [!TIP]
+   > For an app deployed at `https://sample-frame.vercel.app/` your settings page will be located at `https://vercel.com/your-projects/sample-frame/settings`
+4. Open the foked repo from step 1 in a code editor like Visual Studio
+5. Using a code editor or the command line, replace the temporary image in the `public/` folder with the image of your product
+6. Navigate to the `utils/` folder (if using the command line run `cd utils/`)
+7. Replace the following variables in the `utils.ts` file:
 
-   - `NEXT_PUBLIC_URL`
-   - `ITEM_DESCRIPTION`
-   - `ITEM_TITLE`
-   - `IMAGE_NAME` -
-   - `REDIRECT_URL` - a URL (string) to redirect users to upon purchase completion
-
-5. upload your Commerce API Key credentials to Vercel settings page.
-   ** hint ** for an app deployed at `https://commerce-frame-6r9h.vercel.app/` your settings page will be located at `https://vercel.com/hughescoins-projects/commerce-frame-6r9h/settings`
-6. see the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for more details
+   - `NEXT_PUBLIC_URL` - Your website or vercel domain (ex: `https://your-site.com` or `https://sample-frame.vercel.app/`). You may find your vercel domain under your [Projects](https://vercel.com/hughescoins-projects) page
+   - `ITEM_DESCRIPTION` - A description of your product
+   - `ITEM_TITLE` - Title of your product
+   - `IMAGE_NAME` - The full name of your image including file type. (ex: `onchain.png`)
+   - `REDIRECT_URL` - A URL (`string`) to redirect users to upon purchase completion
+   - `PRODUCT_PRICE_USD` - The price (`string`) of your prouct in USD
 
 ## Commit changes
 
 ```
 git init
-git add README.md
-git commit -m "first commit"
+git add -A
+git commit -m "first frame"
 git branch -M master
 git remote add origin git@github.com:Your-Github-Username/Your-Forked-Repo.git
 git push -u origin master
 ```
 
 Done!
+
+## Add Cast your Frame:
+
+1. Log into warpcast
+2. Create cast
+3. Paste link to your vercel or site (remember to use `https://`)
 
 # A redirect frame example
 
