@@ -8,6 +8,7 @@ async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextRes
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
+    console.log('POST hit')
     const addr = await getMetaData(req);
     const body = buildRequestBody(addr);
     const responseData = await createCharge(body);
