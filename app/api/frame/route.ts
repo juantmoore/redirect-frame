@@ -6,6 +6,7 @@ import {
   ITEM_DESCRIPTION,
   createCharge,
 } from '../../../utils/utils';
+import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
 
 const requestBody: ChargeRequestBody = {
   local_price: {
@@ -25,6 +26,19 @@ const requestBody: ChargeRequestBody = {
 };
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
+  let accountAddress: string | undefined = '';
+
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body);
+  console.log('body: ', body);
+
+  if (isValid) {
+    try {
+      accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
+    } catch (err) {
+      console.error(err);
+    }
+  }
   return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
