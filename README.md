@@ -32,7 +32,7 @@ This guide explain how to sell a single item using via a Cast which allows your 
    - `ITEM_TITLE` - Title of your product
    - `IMAGE_NAME` - The full name of your image including file type. (ex: `onchain.png`)
    - `REDIRECT_URL` - A URL (`string`) to redirect users to upon purchase completion
-   - `PRODUCT_PRICE_USD` - The price (`string`) of your prouct in USD
+   - `PRODUCT_PRICE_USD` - The price (`string`) of your prouct in USD (ex: "5.99")
 
 ## Commit changes
 
@@ -45,12 +45,11 @@ git remote add origin git@github.com:Your-Github-Username/Your-Forked-Repo.git
 git push -u origin master
 ```
 
-Done!
-
 ## Add Cast your Frame:
 
 1. Log into your [Warpcast](https://warpcast.com/)
-2. Create cast
+2. Create cast using your vercel or custom domain
+   ![image](./public/cast.png)
 3. Paste link to your vercel or site (remember to use `https://`)
 
 # A redirect frame example
