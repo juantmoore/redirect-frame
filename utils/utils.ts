@@ -6,7 +6,8 @@ export const apiKey = process.env.API_KEY;
 export const apiVersion = process.env.API_VERSION;
 export const commerceApiUrl = 'https://api.commerce.coinbase.com/charges';
 export const PRODUCT_PRICE_USD = '2.00';
-export const ITEM_DESCRIPTION = '';
+export const ITEM_DESCRIPTION = 'Exclusive Base beanies for Warpcaster users';
+export const ITEM_TITLE = 'Base Beanies';
 export const REDIRECT_URL = '';
 export const IMAGE_NAME = 'onchain.png';
 
@@ -52,7 +53,7 @@ export function buildRequestBody(address: string | undefined): ChargeRequestBody
       walletAddress: address,
     },
     pricing_type: 'fixed_price',
-    name: 'Base Beaneies',
+    name: ITEM_TITLE,
     description: ITEM_DESCRIPTION,
     redirect_url: REDIRECT_URL,
   };
