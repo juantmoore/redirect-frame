@@ -14,16 +14,30 @@ const requestBody: ChargeRequestBody = {
     currency: 'USD',
   },
   metadata: {
-    //HAVE THE METADATA COLLECT THE INFOR FROM A FRAME
-    name: 'Boddy', //FARCASTER NAME
-    email: 'frames@gmail', //FID
-    address: '123', //WALLET
+    walletAddress: '123', //WALLET
   },
   pricing_type: 'fixed_price',
   name: 'Base Beaneies',
   description: ITEM_DESCRIPTION,
   redirect_url: REDIRECT_URL,
 };
+
+function buildRequestBody(address: string | undefined): ChargeRequestBody {
+  const requestBody: ChargeRequestBody = {
+    local_price: {
+      amount: PRODUCT_PRICE_USD,
+      currency: 'USD',
+    },
+    metadata: {
+      walletAddress: address,
+    },
+    pricing_type: 'fixed_price',
+    name: 'Base Beaneies',
+    description: ITEM_DESCRIPTION,
+    redirect_url: REDIRECT_URL,
+  };
+  return requestBody;
+}
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
   await getMetaData(req);
@@ -32,7 +46,10 @@ async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextRes
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    const responseData = await createCharge(requestBody);
+    const addr = await getMetaData(req);
+    console.log('user:', addr);
+    const body = buildRequestBody(addr);
+    const responseData = await createCharge(body);
     const hostedUrl = responseData.data.hosted_url;
     return getResponse(req, hostedUrl);
   } catch (error) {
@@ -46,7 +63,6 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
 
 async function getMetaData(req: NextRequest) {
   let accountAddress: string | undefined = '';
-
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body);
   console.log('body: ', body);
@@ -56,8 +72,7 @@ async function getMetaData(req: NextRequest) {
       accountAddress = await getFrameAccountAddress(message, {
         NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
       });
-      console.log('messageå', message);
-      console.log('address', accountAddress);
+      return accountAddress;
     } catch (err) {
       console.error(err);
     }
