@@ -23,6 +23,7 @@ export const createRequestHeaders = (): Headers => {
 const requestHeaders = createRequestHeaders();
 export async function createCharge(chargeData: ChargeRequestBody): Promise<any> {
   try {
+    console.log(requestHeaders)
     const response = await fetch(commerceApiUrl, {
       method: 'POST',
       headers: requestHeaders,
