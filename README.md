@@ -4,17 +4,24 @@ This guide explain how to sell a single item using via a Cast which allows your 
 
 ## Pre-requirements
 
-1. Create a Coinbase Commerce account
-2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` domain/URL
-3. An image of your item (`.png`, `.jpg`) with 1200 x 630 pixels
+1. Create a Coinbase Commerce account [here](https://beta.commerce.coinbase.com/sign-up)
+2. (optional) Create a vercel account for easy deployment. Warpcast requires your Frame to be a `https://` URL
+3. An image of your item for sale (`.png`, `.jpg`) with 1200 x 630 pixel dimensions
 
 ## Start here
 
 1. Clone this repo by running
    ` git clone blah blah.git....`
-2. Connect your github account to Vercel [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for more details
-3. replace the temporary image in the `public/` folder with the image of your product
-4. replace the price of your product by changing the variable in the `utils.ts` file
+2. Connect your github account to Vercel. Reference the [official Vercel](https://vercel.com/docs/deployments/git#deploying-a-git-repository) guide for detailed steps
+3. Replace the temporary image in the `public/` folder with the image of your product
+4. Replace the following variables in the `utils.ts` file:
+
+   - `NEXT_PUBLIC_URL`
+   - `ITEM_DESCRIPTION`
+   - `ITEM_TITLE`
+   - `IMAGE_NAME` -
+   - `REDIRECT_URL` - a URL (string) to redirect users to upon purchase completion
+
 5. upload your Commerce API Key credentials to Vercel settings page.
    ** hint ** for an app deployed at `https://commerce-frame-6r9h.vercel.app/` your settings page will be located at `https://vercel.com/hughescoins-projects/commerce-frame-6r9h/settings`
 6. see the official Vercel guide on [environment variables](https://vercel.com/docs/projects/environment-variables) for more details
