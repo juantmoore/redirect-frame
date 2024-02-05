@@ -10,8 +10,11 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
     console.log('POST hit')
     const addr = await getMetaData(req);
+    console.log("address: ", addr)
     const body = buildRequestBody(addr);
+    console.log("body: ", body)
     const responseData = await createCharge(body);
+    console.log("response: ", responseData)
     const hostedUrl = responseData.data.hosted_url;
     console.log({
       charge: responseData.data.id,
