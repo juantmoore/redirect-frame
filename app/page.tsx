@@ -24,7 +24,7 @@ export const metadata: Metadata = {
 export default function Page() {
   return (
     <>
-      <img src={`/${IMAGE_NAME}}`} />
+      <img src={`/${IMAGE_NAME}`} />
     </>
   );
 }
