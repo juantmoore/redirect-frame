@@ -26,19 +26,7 @@ const requestBody: ChargeRequestBody = {
 };
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
-  let accountAddress: string | undefined = '';
-
-  const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body);
-  console.log('body: ', body);
-
-  if (isValid) {
-    try {
-      accountAddress = await getFrameAccountAddress(message, { NEYNAR_API_KEY: 'NEYNAR_API_DOCS' });
-    } catch (err) {
-      console.error(err);
-    }
-  }
+  getMetaData(req);
   return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
@@ -53,6 +41,26 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
+  }
+}
+
+async function getMetaData(req: NextRequest) {
+  let accountAddress: string | undefined = '';
+
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body);
+  console.log('body: ', body);
+
+  if (isValid) {
+    try {
+      accountAddress = await getFrameAccountAddress(message, {
+        NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
+      });
+      console.log('messageå', message);
+      console.log('address', accountAddress);
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
