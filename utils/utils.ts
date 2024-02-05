@@ -1,5 +1,6 @@
 import { ChargeRequestBody } from '../types/commerceTypes';
-
+import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
+import { NextRequest, NextResponse } from 'next/server';
 export const NEXT_PUBLIC_URL = 'https://commerce-frame-6r9h.vercel.app';
 export const apiKey = process.env.API_KEY;
 export const apiVersion = process.env.API_VERSION;
@@ -55,4 +56,20 @@ export function buildRequestBody(address: string | undefined): ChargeRequestBody
     redirect_url: REDIRECT_URL,
   };
   return requestBody;
+}
+
+export async function getMetaData(req: NextRequest) {
+  let accountAddress: string | undefined = '';
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body);
+  if (isValid) {
+    try {
+      accountAddress = await getFrameAccountAddress(message, {
+        NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
+      });
+      return accountAddress;
+    } catch (err) {
+      console.error(err);
+    }
+  }
 }
