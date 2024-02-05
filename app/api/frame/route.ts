@@ -26,7 +26,7 @@ const requestBody: ChargeRequestBody = {
 };
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
-  getMetaData(req);
+  await getMetaData(req);
   return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
