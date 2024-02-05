@@ -52,9 +52,12 @@ git push -u origin master
    ![image](./public/cast.png)
 3. Click "Cast"
 
+Enjoy!
+
 # A redirect frame example
 
 Built using [a-frame-in-100-lines](https://github.com/Zizzamia/a-frame-in-100-lines) by [Zizzamia](https://github.com/Zizzamia)
+and [redirect-frame](https://github.com/farcasterxyz/redirect-frame) by [Zizzamia](https://github.com/Zizzamia) and [Sanjay](https://github.com/sanjayprabhu)
 
 ## Resources
 
