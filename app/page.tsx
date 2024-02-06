@@ -25,11 +25,14 @@ export const metadata: Metadata = {
 
 export default function Page() {
   console.log(process.env.API_VERSION)
+  
 
   return (
     <>
+     <p>Yoo</p>
+     <p>{process.env.BLAH}</p>
       <img src={`/${IMAGE_NAME}`} />
-      <p>{process.env.BLAH}</p>
+     
     </>
   );
 }
