@@ -29,6 +29,7 @@ export default function Page() {
   return (
     <>
       <img src={`/${IMAGE_NAME}`} />
+      <p>{process.env.BLAH}</p>
     </>
   );
 }
