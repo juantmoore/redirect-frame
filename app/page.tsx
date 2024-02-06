@@ -30,7 +30,7 @@ export default function Page() {
   return (
     <>
      <p>Yoo</p>
-     <p>{process.env.BLAH}</p>
+     <p>{process.env.NEXT_PUBLIC_BLAH}</p>
       <img src={`/${IMAGE_NAME}`} />
      
     </>
