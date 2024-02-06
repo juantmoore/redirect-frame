@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-
-import { createCharge, buildRequestBody, getMetaData } from '../../../utils/utils';
+import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
+import { createCharge, buildRequestBody } from '../../../utils/utils';
 
 async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextResponse> {
   return NextResponse.redirect(hostedUrl, { status: 302 });
@@ -11,6 +11,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
     console.log(process.env.BLAH)
     console.log(process.env.API_VERSION)
     console.log('POST hit')
+    console.log('req: ', req)
     const addr = await getMetaData(req);
     console.log("address: ", addr)
     const body = buildRequestBody(addr);
@@ -29,6 +30,27 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
       status: 500,
       headers: { 'Content-Type': 'application/json' },
     });
+  }
+}
+
+export async function getMetaData(req: NextRequest) {
+  const rawBody = await req.text()
+  console.log("raw request body: ", rawBody)
+  if(!rawBody){
+    throw new Error("request body is empty")
+  }
+  let accountAddress: string | undefined = '';
+  const body: FrameRequest = await req.json();
+  const { isValid, message } = await getFrameMessage(body);
+  if (isValid) {
+    try {
+      accountAddress = await getFrameAccountAddress(message, {
+        NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
+      });
+      return accountAddress;
+    } catch (err) {
+      console.error(err);
+    }
   }
 }
 
