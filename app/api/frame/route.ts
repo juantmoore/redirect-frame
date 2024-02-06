@@ -39,7 +39,7 @@ async function getMetaData(req: NextRequest): Promise<string | undefined> {
   else{
     console.log("else")
     let accountAddress: string | undefined = '';
-    const body: FrameRequest = await req.json();
+    const body: FrameRequest = JSON.parse(rawBody);
     const { isValid, message } = await getFrameMessage(body);
     if (isValid) {
       try {
