@@ -9,17 +9,17 @@ async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextRes
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    // const addr = await getMetaData(req);
-    // const body = buildRequestBody(addr);
-    // console.log("body: ", body)
-    // const responseData = await createCharge(body);
-    // console.log("response: ", responseData)
-    // const hostedUrl = responseData.data.hosted_url;
-    // console.log({
-    //   charge: responseData.data.id,
-    //   user: addr,
-    // });
-    const hostedUrl = 'https://commerce.coinbase.com/checkout/a56ecd4e-1459-4ff6-bfb5-0820a866020d'
+    const addr = await getMetaData(req);
+    const body = buildRequestBody(addr);
+    console.log("body: ", body)
+    const responseData = await createCharge(body);
+    console.log("response: ", responseData)
+    const hostedUrl = responseData.data.hosted_url;
+    console.log({
+      charge: responseData.data.id,
+      user: addr,
+    });
+    //const hostedUrl = 'https://commerce.coinbase.com/checkout/a56ecd4e-1459-4ff6-bfb5-0820a866020d'
     return getResponse(req, hostedUrl);
   } catch (error) {
     console.error('Error in POST function:', error);
