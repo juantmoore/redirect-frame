@@ -30,15 +30,10 @@ const frameMetadata = getFrameMetadata({
 });
 
 export default function Page() {
-  console.log(process.env.API_VERSION)
-  
 
   return (
     <>
-     <p>Yoo</p>
-     <p>{process.env.NEXT_PUBLIC_BLAH}</p>
       <img src={`/${IMAGE_NAME}`} />
-     
     </>
   );
 }
