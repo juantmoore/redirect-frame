@@ -6,23 +6,20 @@ async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextRes
   return NextResponse.redirect(hostedUrl, { status: 302 });
 }
 
+
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
-    console.log(process.env.BLAH)
-    console.log(process.env.API_VERSION)
-    console.log('POST hit')
-    console.log('req: ', req)
-    const addr = await getMetaData(req);
-    console.log("address: ", addr)
-    const body = buildRequestBody(addr);
-    console.log("body: ", body)
-    const responseData = await createCharge(body);
-    console.log("response: ", responseData)
-    const hostedUrl = responseData.data.hosted_url;
-    console.log({
-      charge: responseData.data.id,
-      user: addr,
-    });
+    // const addr = await getMetaData(req);
+    // const body = buildRequestBody(addr);
+    // console.log("body: ", body)
+    // const responseData = await createCharge(body);
+    // console.log("response: ", responseData)
+    // const hostedUrl = responseData.data.hosted_url;
+    // console.log({
+    //   charge: responseData.data.id,
+    //   user: addr,
+    // });
+    const hostedUrl = 'https://commerce.coinbase.com/checkout/a56ecd4e-1459-4ff6-bfb5-0820a866020d'
     return getResponse(req, hostedUrl);
   } catch (error) {
     console.error('Error in POST function:', error);
@@ -33,7 +30,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-async function getMetaData(req: NextRequest) {
+async function getMetaData(req: NextRequest): Promise<string | undefined> {
   const rawBody = await req.text()
   console.log("raw request body: ", rawBody)
   if(!rawBody){
