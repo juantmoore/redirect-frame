@@ -8,6 +8,8 @@ async function getResponse(req: NextRequest, hostedUrl: string): Promise<NextRes
 
 export async function POST(req: NextRequest): Promise<NextResponse> {
   try {
+    console.log(process.env.BLAH)
+    console.log(process.env.API_VERSION)
     console.log('POST hit')
     const addr = await getMetaData(req);
     console.log("address: ", addr)
