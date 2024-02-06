@@ -21,9 +21,11 @@ export const metadata: Metadata = {
   },
 };
 
-console.log(process.env.API_VERSION)
+
 
 export default function Page() {
+  console.log(process.env.API_VERSION)
+
   return (
     <>
       <img src={`/${IMAGE_NAME}`} />
