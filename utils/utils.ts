@@ -1,7 +1,7 @@
 import { ChargeRequestBody } from '../types/commerceTypes';
 import { FrameRequest, getFrameAccountAddress, getFrameMessage } from '@coinbase/onchainkit';
 import { NextRequest } from 'next/server';
-export const NEXT_PUBLIC_URL = 'https://redirect-frame-tau.vercel.app/';
+export const NEXT_PUBLIC_URL = 'https://redirect-frame-tau.vercel.app';
 export const apiKey = process.env.API_KEY;
 export const apiVersion = process.env.API_VERSION;
 export const commerceApiUrl = 'https://api.commerce.coinbase.com/charges';
@@ -61,7 +61,7 @@ export function buildRequestBody(address: string | undefined): ChargeRequestBody
   return requestBody;
 }
 
-export async function getMetaData(req: NextRequest) {
+ async function getMetaData(req: NextRequest) {
   let accountAddress: string | undefined = '';
   const body: FrameRequest = await req.json();
   const { isValid, message } = await getFrameMessage(body);
