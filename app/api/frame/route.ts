@@ -33,7 +33,7 @@ export async function POST(req: NextRequest): Promise<NextResponse> {
   }
 }
 
-export async function getMetaData(req: NextRequest) {
+async function getMetaData(req: NextRequest) {
   const rawBody = await req.text()
   console.log("raw request body: ", rawBody)
   if(!rawBody){
