@@ -36,19 +36,23 @@ async function getMetaData(req: NextRequest): Promise<string | undefined> {
   if(!rawBody){
     throw new Error("request body is empty")
   }
-  let accountAddress: string | undefined = '';
-  const body: FrameRequest = await req.json();
-  const { isValid, message } = await getFrameMessage(body);
-  if (isValid) {
-    try {
-      accountAddress = await getFrameAccountAddress(message, {
-        NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
-      });
-      return accountAddress;
-    } catch (err) {
-      console.error(err);
+  else{
+    console.log("else")
+    let accountAddress: string | undefined = '';
+    const body: FrameRequest = await req.json();
+    const { isValid, message } = await getFrameMessage(body);
+    if (isValid) {
+      try {
+        accountAddress = await getFrameAccountAddress(message, {
+          NEYNAR_API_KEY: 'NEYNAR_API_DOCS',
+        });
+        return accountAddress;
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
+
 }
 
 export const dynamic = 'force-dynamic';
